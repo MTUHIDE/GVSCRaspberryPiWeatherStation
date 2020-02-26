@@ -8,10 +8,12 @@
   <div id="my-signin2"></div>
   <meta name="google-signin-client_id" content="1096837814836-uauls6kcv7rkn79il11ue5578eqgr39e.apps.googleusercontent.com">
 
+  <button id = "guest-login" type = button onclick="rerooute()">Login as a Guest</button>
+
   <script>
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-      window.location.replace("/LenaTest");
+
     }
     function onFailure(error) {
       console.log(error);
@@ -26,6 +28,10 @@
         'onsuccess': onSuccess,
         'onfailure': onFailure
       });
+    }
+
+    function rerooute(){
+      window.location.replace("/landing");
     }
   </script>
 
