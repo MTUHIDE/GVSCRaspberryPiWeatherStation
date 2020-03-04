@@ -142,6 +142,9 @@ center: ol.proj.fromLonLat([271.44,47.1211]),
 zoom: 14
 })
 });
+var markers = new OpenLayers.Layer.Markers( "Markers" );
+map.addLayer(markers);
+markers.addMarker(new OpenLayers.Marker(lonLat));
 </script>
 <script src="LenaTest.js" type="module"></script>
 </div>
