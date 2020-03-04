@@ -107,7 +107,7 @@ box-shadow: 0 5px #666;
 </style>
 
 <head>
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 </head>
 
 <body id="back-background">
@@ -125,18 +125,16 @@ box-shadow: 0 5px #666;
 <div id="map">
 <script type="text/javascript">
 
-var map = new ol.Map({
-target: 'map',
-layers: [
-new ol.layer.Tile({
-source: new ol.source.OSM()
-})
-],
-view: new ol.View({
-center: ol.proj.fromLonLat([271.44,47.1211]),
-zoom: 14
-})
-});
+map = new OpenLayers.Map("map");
+map.addLayer(new OpenLayers.Layer.OSM());
+
+var lonLat = new OpenLayers.LonLat(47.118287, -88.544612).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+var zoom=16;
+var markers = new OpenLayers.Layer.Markers( "Markers" );
+map.addLayer(markers);
+var Pi1 = new OpenLayers.LonLat(47.118172, -88.547190).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+markers.addMarker(new OpenLayers.Marker(Pi1));
+map.setCenter (lonLat, zoom);
 </script>
 <script src="LenaTest.js" type="module"></script>
 </div>
