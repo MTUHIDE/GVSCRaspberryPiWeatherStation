@@ -128,12 +128,13 @@ box-shadow: 0 5px #666;
 map = new OpenLayers.Map("map");
 map.addLayer(new OpenLayers.Layer.OSM());
 
-var lonLat = new OpenLayers.LonLat(47.118287, -88.544612).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+var lonLat = new OpenLayers.LonLat(271.45, 47.1211).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
 var zoom=16;
 var markers = new OpenLayers.Layer.Markers( "Markers" );
 map.addLayer(markers);
-var Pi1 = new OpenLayers.LonLat(47.118172, -88.547190).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
-markers.addMarker(new OpenLayers.Marker(Pi1));
+var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+
+markers.addMarker(new OpenLayers.Marker(pi));
 map.setCenter (lonLat, zoom);
 </script>
 <script src="LenaTest.js" type="module"></script>
