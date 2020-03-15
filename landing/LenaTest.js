@@ -1,43 +1,27 @@
-import 'ol/ol.css';
-import Feature from 'ol/Feature';
-import Map from 'ol/Map';
-import View from 'ol/View';
-import Point from 'ol/geom/Point';
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
-import {Fill, RegularShape, Stroke, Style} from 'ol/style';
+map = new OpenLayers.Map("map");
+map.addLayer(new OpenLayers.Layer.OSM());
 
-	
-var map = new ol.Map({
-	target: 'map',
-	layers: [
-		new ol.layer.Tile({
-			source: new ol.source.OSM()
-		})
-	],
-	view: new ol.View({
-		center: ol.proj.fromLonLat([271.44,47.1211]),
-		zoom: 14
-	})
-						
-});
+var lonLat = new OpenLayers.LonLat(271.45, 47.1211).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+var zoom=16;
+var markers = new OpenLayers.Layer.Markers( "Markers" );
+map.addLayer(markers);
+var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
 
-var stroke = new Stroke({color: 'black', width: 2});
-var fill = new Fill({color: 'red'});
-					
-var styles = {
-  'square': new Style({
-    image: new RegularShape({
-      fill: fill,
-      stroke: stroke,
-      points: 4,
-      radius: 10,
-      angle: Math.PI / 4
-    })
-  })
-};
+markers.addMarker(new OpenLayers.Marker(pi));
+map.setCenter (lonLat, zoom);
 
-	var styleKeys = ['square'];
-	
-	features[0] new Feature(new Point(271.44,47.1211));
-	
+
+document.getElementById("pi-finder-button").onclick = function() {piFinderClick()};
+document.getElementById("hide-pi-finder").onclick = function() {hidePiClick()};
+
+function piFinderClick() 
+{
+document.getElementById("pi-finder-button").style.display = "none";
+document.getElementById("pi-finder-menu").style.display = "block";
+}
+
+function hidePiClick() 
+{
+document.getElementById("pi-finder-menu").style.display = "none";
+document.getElementById("pi-finder-button").style.display = "block";
+}

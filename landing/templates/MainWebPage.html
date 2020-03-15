@@ -1,5 +1,4 @@
-{% extends "personal/header.html" %}
-{% block content %}
+
 <html>
 <title>TempPi.st</title>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL">
@@ -106,7 +105,7 @@ border: 3px solid red;
 box-shadow: 0 5px #666;
 }
 </style>
-{% load static %}
+
 <head>
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 </head>
@@ -115,7 +114,7 @@ box-shadow: 0 5px #666;
 <div id="outer-border">
 <div id="main-body">
 
-<h1 id="main-title-header"><img src="{% static 'personal/img/TempistLogo.png' %}" style="height:100px; margin-left:-20px;"></h1>
+<h1 id="main-title-header"><img src="Logo.png" style="height:100px; margin-left:-20px;"></h1>
 
 <div id="pi-finder">
 <button id="pi-finder-button" type="button">Click Me!</button>
@@ -138,7 +137,7 @@ var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Pr
 markers.addMarker(new OpenLayers.Marker(pi));
 map.setCenter (lonLat, zoom);
 </script>
-<script src="{% static 'personal/js/LenaTest.js' %}" type="module"></script>
+<script src="LenaTest.js" type="module"></script>
 </div>
 </div>
 </div>
@@ -160,5 +159,4 @@ document.getElementById("pi-finder-menu").style.display = "none";
 document.getElementById("pi-finder-button").style.display = "block";
 }
 </script>
-</html>
-{% endblock %}
+</html> 
