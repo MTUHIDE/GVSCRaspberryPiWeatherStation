@@ -1,4 +1,5 @@
-
+{% extends "personal/header.html" %}
+{% block content %}
 <html>
 <title>TempPi.st</title>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL">
@@ -137,7 +138,7 @@ var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Pr
 markers.addMarker(new OpenLayers.Marker(pi));
 map.setCenter (lonLat, zoom);
 </script>
-<script src="LenaTest.js" type="module"></script>
+
 </div>
 </div>
 </div>
@@ -159,4 +160,5 @@ document.getElementById("pi-finder-menu").style.display = "none";
 document.getElementById("pi-finder-button").style.display = "block";
 }
 </script>
-</html> 
+</html>
+{% endblock %}
