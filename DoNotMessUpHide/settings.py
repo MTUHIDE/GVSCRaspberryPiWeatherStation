@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ["127.0.0.1", "ec2-18-189-21-31.us-east-2.compute.amazonaws.com"
 
 INSTALLED_APPS = [
     'webapp',
-    'personal',
     'landing',
     'django.contrib.admin',
     'django.contrib.auth',
