@@ -11,21 +11,24 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dotenv
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dotenv.load_dotenv(dotenv.find_dotenv("{BASE_DIR}/.env".format(BASE_DIR=BASE_DIR)))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-q9ab8l-m(%j6#q7r9xy8mqm072p@02bc2d%s&a36mqf@^cv(='
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.getenv("PRODUCTION", "false") != "true")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "ec2-18-189-21-31.us-east-2.compute.amazonaws.com", "172.31.31.37"]
 
 
 # Application definition
@@ -79,8 +82,12 @@ WSGI_APPLICATION = 'DoNotMessUpHide.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "hidearmy_tempist",
+        'USER': os.getenv("DATABASE_USER"),
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
+        'HOST': os.getenv("DATABASE_HOST"),
+        'PORT': '',
     }
 }
 
