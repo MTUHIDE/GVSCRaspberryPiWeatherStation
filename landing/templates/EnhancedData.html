@@ -55,38 +55,43 @@ tr:nth-child(even) {
     <th>Current</th>
     <th>24 hr high</th>
     <th>24 hr low</th>
+    <th>24 hr Avg</th>
     <th>Month Avg</th>
     <th>Year Avg</th>
   </tr>
   <tr>
     <td>Temp</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
+    <td>{{now.temperature}}°C</td>
+    <td>{{dayHigh.temperature__max}}°C</td>
+    <td>{{dayLow.temperature__min}}°C</td>
+    <td>{{dayAvg.temperature__avg}}°C</td>
     <td>Unkown</td>
     <td>Unkown</td>
   </tr>
   <tr>
     <td>Humidity</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
+    <td>{{now.humidity}}%</td>
+    <td>{{dayHigh.humidity__max}}%</td>
+    <td>{{dayLow.humidity__min}}%</td>
+    <td>{{dayAvg.humidity__avg}}%</td>
     <td>Unkown</td>
     <td>Unkown</td>
   </tr>
   <tr>
     <td>Air Pressure</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
+    <td>{{now.pressure}} kpa</td>
+    <td>{{dayHigh.pressure__max}} kpa</td>
+    <td>{{dayLow.pressure__min}} kpa</td>
+    <td>{{dayAvg.pressure__avg}} kpa</td>
     <td>Unkown</td>
     <td>Unkown</td>
   </tr>
   <tr>
     <td>Wind Speed</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
-    <td>Unkown</td>
+    <td>{{now.wind_speed}}</td>
+    <td>{{dayHigh.wind_speed__max}}</td>
+    <td>{{dayLow.wind_speed__min}}</td>
+    <td>{{dayAvg.wind_speed__avg}}</td>
     <td>Unkown</td>
     <td>Unkown</td>
   </tr>

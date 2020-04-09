@@ -37,11 +37,11 @@ class Events(models.Model):
 
 
 class GatheredData(models.Model):
-    id = models.OneToOneField('Pi', models.DO_NOTHING, db_column='id', primary_key=True)
-    pi = models.ForeignKey('PiData', models.DO_NOTHING)
-    latitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='latitude')
-    longitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='longitude')
-    date = models.ForeignKey('PiData', models.DO_NOTHING, db_column='date')
+    id = models.OneToOneField('Pi', models.DO_NOTHING, db_column='id', primary_key=True, related_name="gathered_data_id")
+    pi = models.ForeignKey('PiData', models.DO_NOTHING, related_name="gathered_data_pi")
+    latitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='latitude', related_name="gathered_data_latitude")
+    longitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='longitude', related_name="gathered_data_longitude")
+    date = models.ForeignKey('PiData', models.DO_NOTHING, db_column='date', related_name="gathered_data_date")
 
     class Meta:
         managed = False
@@ -72,10 +72,10 @@ class Historical(models.Model):
 
 
 class Naming(models.Model):
-    email = models.OneToOneField('User', models.DO_NOTHING, db_column='email', primary_key=True)
-    id = models.ForeignKey('Pi', models.DO_NOTHING, db_column='id')
-    latitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='latitude')
-    longitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='longitude')
+    email = models.OneToOneField('User', models.DO_NOTHING, db_column='email', primary_key=True, related_name="naming_email")
+    id = models.ForeignKey('Pi', models.DO_NOTHING, db_column='id', related_name="naming_id")
+    latitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='latitude', related_name="naming_latitude")
+    longitude = models.ForeignKey('Pi', models.DO_NOTHING, db_column='longitude', related_name="naming_longitude")
 
     class Meta:
         managed = False
@@ -107,12 +107,12 @@ class PiData(models.Model):
 
 
 class SignificantApi(models.Model):
-    id = models.ForeignKey(Events, models.DO_NOTHING, db_column='id')
-    city_name = models.OneToOneField(ApiData, models.DO_NOTHING, db_column='city_name', primary_key=True)
-    date = models.ForeignKey(ApiData, models.DO_NOTHING, db_column='date')
-    type = models.ForeignKey(Events, models.DO_NOTHING, db_column='type')
-    starttime = models.ForeignKey(Events, models.DO_NOTHING, db_column='startTime')  # Field name made lowercase.
-    endtime = models.ForeignKey(Events, models.DO_NOTHING, db_column='endTime')  # Field name made lowercase.
+    id = models.ForeignKey(Events, models.DO_NOTHING, db_column='id', related_name="significant_api_id")
+    city_name = models.OneToOneField(ApiData, models.DO_NOTHING, db_column='city_name', primary_key=True, related_name="significant_api_city_name")
+    date = models.ForeignKey(ApiData, models.DO_NOTHING, db_column='date', related_name="significant_api_date")
+    type = models.ForeignKey(Events, models.DO_NOTHING, db_column='type', related_name="significant_api_type")
+    starttime = models.ForeignKey(Events, models.DO_NOTHING, db_column='startTime', related_name="significant_api_starttime")  # Field name made lowercase.
+    endtime = models.ForeignKey(Events, models.DO_NOTHING, db_column='endTime', related_name="significant_api_endtime")  # Field name made lowercase.
 
     class Meta:
         managed = False
