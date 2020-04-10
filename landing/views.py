@@ -20,7 +20,7 @@ def login(request):
 
 
 def data(request, pi_id):
-    context = {}
+    context = {"pi_id": pi_id}
     try:
         context["now"] = PiData.objects.filter(pi_id=pi_id).order_by("-time").first()
         min_time = datetime.datetime.now() - datetime.timedelta(days=1)
@@ -33,8 +33,6 @@ def data(request, pi_id):
                                                     Avg('wind_speed'))
     except ObjectDoesNotExist:
         raise Http404("Ship not found")
-
-    print(context)
 
     return render(request, "EnhancedData.html", context)
 
