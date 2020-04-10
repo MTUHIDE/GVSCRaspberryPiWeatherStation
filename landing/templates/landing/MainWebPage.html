@@ -2,7 +2,7 @@
     <title>Tempi.st</title>
     <meta charset="utf-8"/>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="../../static/personal/css/bootstrap.min.css" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
@@ -43,7 +43,11 @@
                 <ul class="nav flex-column">
                     <li><a href='/'>Home</a></li>
                 </ul>
-                <nav style="height:100px; width=20%; overflow:hidden; overflow-y:scroll; border-top: 2px solid orange">
+                <div class="search-label-icon" style=" border-top: 2px solid orange">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="../../static/personal/img/search16.png"></button>
+                </div>
+                <nav style="height:100px; width=20%; overflow:hidden; overflow-y:scroll;">
 					<ul>
                         <li id = "1">Pi#1 <button onclick="toEnhancedData(1)">Enhanced Data</button></li>
 					    <li id = "2">Pi#2 <button onclick="toEnhancedData(2)">Enhanced Data</button></li>
@@ -57,7 +61,6 @@
 					    <li id = "10">Pi#10 <button onclick="toEnhancedData(10)">Enhanced Data</button></li>
 					</ul>
 			</nav>
-
             </div> <!--well bs-sidebar affix-->
         </div> <!--col-sm-2-->
         <div class="col-md-10">
