@@ -39,33 +39,31 @@
             <br>
             <!-- Great, til you resize. -->
             <!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
-            <div class="card bs-sidebar" id="sidebar" style="background-color:lightblue;border:4px solid orange">
+            <div class="card bs-sidebar" id="sidebar" style="background-color:lightblue;border:4px solid orange;">
                 <ul class="nav flex-column">
                     <li><a href='/'>Home</a></li>
                 </ul>
                 <div class="search-label-icon" style=" border-top: 2px solid orange">
-                    <input type="text" placeholder="Search..">
-                    <button type="submit"><img src="../../static/personal/img/search16.png"></button>
+                    <input id="searchBar" type="text" placeholder="Search...">
+                    <button id="searchBtn" type="submit" onclick="search()"><img src="../../static/personal/img/search16.png"></button>
                 </div>
-                <nav style="height:100px; width=20%; overflow:hidden; overflow-y:scroll;">
-					<ul>
-                        <style type="text/css">
-                            button {
-                                color: black;
-                                background: lightblue;
-                            }
-                        </style>
-                        <li id = "1">Pi#1 <button onclick="toEnhancedData(1)">Enhanced Data</button></li>
-					    <li id = "2">Pi#2 <button onclick="toEnhancedData(2)">Enhanced Data</button></li>
-					    <li id = "3">Pi#3 <button onclick="toEnhancedData(3)">Enhanced Data</button></li>
-					    <li id = "4">Pi#4 <button onclick="toEnhancedData(4)">Enhanced Data</button></li>
-					    <li id = "5">Pi#5 <button onclick="toEnhancedData(5)">Enhanced Data</button></li>
-					    <li id = "6">Pi#6 <button onclick="toEnhancedData(6)">Enhanced Data</button></li>
-					    <li id = "7">Pi#7 <button onclick="toEnhancedData(7)">Enhanced Data</button></li>
-					    <li id = "8">Pi#8 <button onclick="toEnhancedData(8)">Enhanced Data</button></li>
-					    <li id = "9">Pi#9 <button onclick="toEnhancedData(9)">Enhanced Data</button></li>
-					    <li id = "10">Pi#10 <button onclick="toEnhancedData(10)">Enhanced Data</button></li>
-					</ul>
+                <nav id="piList" style="height:100px; width:100%; overflow:hidden; overflow-y:scroll;">
+                    <style type="text/css">
+                        button {
+                            color: black;
+                            background: lightblue;
+                        }
+                    </style>
+                    <div class="pies" id = "1">Pi#1 <button onclick="toEnhancedData(1)">Enhanced Data</button></div>
+                    <div class="pies" id = "2">Pi#2 <button onclick="toEnhancedData(2)">Enhanced Data</button></div>
+                    <div class="pies" id = "3">Pi#3 <button onclick="toEnhancedData(3)">Enhanced Data</button></div>
+                    <div class="pies" id = "4">Pi#4 <button onclick="toEnhancedData(4)">Enhanced Data</button></div>
+                    <div class="pies" id = "5">Pi#5 <button onclick="toEnhancedData(5)">Enhanced Data</button></div>
+                    <div class="pies" id = "6">Pi#6 <button onclick="toEnhancedData(6)">Enhanced Data</button></div>
+                    <div class="pies" id = "7">Pi#7 <button onclick="toEnhancedData(7)">Enhanced Data</button></div>
+                    <div class="pies" id = "8">Pi#8 <button onclick="toEnhancedData(8)">Enhanced Data</button></div>
+                    <div class="pies" id = "9">Pi#9 <button onclick="toEnhancedData(9)">Enhanced Data</button></div>
+                    <div class="pies" id = "10">Pi#10 <button onclick="toEnhancedData(10)">Enhanced Data</button></div>
 			</nav>
             </div> <!--well bs-sidebar affix-->
         </div> <!--col-sm-2-->
@@ -222,6 +220,18 @@
 
                 function toEnhancedData(num){
                     window.location.replace("/data/"+num);
+                }
+
+                function search(){
+                    var input = document.getElementById("searchBar").value;
+                    var x, i;
+                    x = document.getElementsByClassName("pies");
+                    for(i = 0; i < x.length; i++){
+                        x[i].style.display = "none";
+                        if(x[i].id.includes(input)){
+                            x[i].style.display = "block";
+                        }
+                    }
                 }
             </script>
             </div>
