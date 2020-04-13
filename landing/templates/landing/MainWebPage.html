@@ -231,7 +231,7 @@
                         var div = document.createElement("div")
                         div.className = "pies";
                         div.id = x;
-                        div.innerHTML = "Pi#"+x+" <button onclick=\"toEnhancedData(1)\">Enhanced Data</button>";
+                        div.innerHTML = "Pi#"+x+" <button onclick=\"toEnhancedData("+x+")\">Enhanced Data</button>";
                         document.getElementById("piList").appendChild(div);
                     }
                 }
