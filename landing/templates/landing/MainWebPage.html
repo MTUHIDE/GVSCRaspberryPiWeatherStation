@@ -54,17 +54,8 @@
                             background: lightblue;
                         }
                     </style>
-                    <div class="pies" id = "1">Pi#1 <button onclick="toEnhancedData(1)">Enhanced Data</button></div>
-                    <div class="pies" id = "2">Pi#2 <button onclick="toEnhancedData(2)">Enhanced Data</button></div>
-                    <div class="pies" id = "3">Pi#3 <button onclick="toEnhancedData(3)">Enhanced Data</button></div>
-                    <div class="pies" id = "4">Pi#4 <button onclick="toEnhancedData(4)">Enhanced Data</button></div>
-                    <div class="pies" id = "5">Pi#5 <button onclick="toEnhancedData(5)">Enhanced Data</button></div>
-                    <div class="pies" id = "6">Pi#6 <button onclick="toEnhancedData(6)">Enhanced Data</button></div>
-                    <div class="pies" id = "7">Pi#7 <button onclick="toEnhancedData(7)">Enhanced Data</button></div>
-                    <div class="pies" id = "8">Pi#8 <button onclick="toEnhancedData(8)">Enhanced Data</button></div>
-                    <div class="pies" id = "9">Pi#9 <button onclick="toEnhancedData(9)">Enhanced Data</button></div>
-                    <div class="pies" id = "10">Pi#10 <button onclick="toEnhancedData(10)">Enhanced Data</button></div>
 			</nav>
+                <button id="loadPies" onclick="loadFromData()">Load from Data Base</button>
             </div> <!--well bs-sidebar affix-->
         </div> <!--col-sm-2-->
         <div class="col-md-10">
@@ -233,7 +224,19 @@
                         }
                     }
                 }
+
+                function loadFromData(){
+                    var x;
+                    for(x = 1; x < 21; x++){
+                        var div = document.createElement("div")
+                        div.className = "pies";
+                        div.id = x;
+                        div.innerHTML = "Pi#"+x+" <button onclick=\"toEnhancedData(1)\">Enhanced Data</button>";
+                        document.getElementById("piList").appendChild(div);
+                    }
+                }
             </script>
+
             </div>
         </div>
     </div>
