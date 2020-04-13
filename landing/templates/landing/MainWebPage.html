@@ -42,200 +42,209 @@
             <div class="card bs-sidebar" id="sidebar" style="background-color:lightblue;border:4px solid orange;">
                 <ul class="nav flex-column">
                     <li><a href='/'>Home</a></li>
+                    <li><a href="#" onclick="signOut();">Sign Out</a></li>
                 </ul>
                 <div class="search-label-icon" style=" border-top: 2px solid orange">
                     <input id="searchBar" type="text" placeholder="Search...">
-                    <button id="searchBtn" type="submit" onclick="search()"><img src="../../static/personal/img/search16.png"></button>
+                    <button id="searchBtn" type="submit" onclick="search()"><img
+                            src="../../static/personal/img/search16.png"></button>
                 </div>
                 <nav id="piList" style="height:100px; width:100%; overflow:hidden; overflow-y:scroll;">
                     {% for pi in pis %}
-                    <div class="pies" id="{{ pi.id }}" >
+                    <div class="pies" id="{{ pi.id }}">
                         Pi #{{pi.id}}
                         <a href="/data/{{pi.id}}">Enhanced Data</a>
                     </div>
                     {% endfor %}
-			</nav>
+                </nav>
                 <!--<button id="loadPies" onclick="loadFromData()">Load from Data Base</button>-->
             </div> <!--well bs-sidebar affix-->
         </div> <!--col-sm-2-->
         <div class="col-md-10">
             <div class='container-fluid'>
-            <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL">
-            </script>
+                <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL">
+                </script>
 
-            <style type="text/css">
-                #back-background {
-                    background-color: navy;
-                }
+                <style type="text/css">
+                    #back-background {
+                        background-color: navy;
+                    }
 
-                #outer-border {
-                    padding: 2%;
-                }
+                    #outer-border {
+                        padding: 2%;
+                    }
 
-                #main-body {
-                    border-style: solid;
-                    border-width: 5px;
-                    border-color: orange;
-                    border-radius: 10px;
-                    height: 95%;
-                    width: 100%;
-                }
+                    #main-body {
+                        border-style: solid;
+                        border-width: 5px;
+                        border-color: orange;
+                        border-radius: 10px;
+                        height: 95%;
+                        width: 100%;
+                    }
 
-                #map {
-                    height: 100%;
-                    width: 100%;
-                    position: relative;
-                }
+                    #map {
+                        height: 100%;
+                        width: 100%;
+                        position: relative;
+                    }
 
-                #main-title-header {
-                    display: inline;
-                    position: absolute;
-                    width: 25%;
-                    padding-top: 2%;
-                    text-align: center;
+                    #main-title-header {
+                        display: inline;
+                        position: absolute;
+                        width: 25%;
+                        padding-top: 2%;
+                        text-align: center;
 
-                    border-radius: 10px;
-                    min-height: 8%;
-                    z-index: 10;
-                    margin-left: 37.5%;
-                }
+                        border-radius: 10px;
+                        min-height: 8%;
+                        z-index: 10;
+                        margin-left: 37.5%;
+                    }
 
-                #pi-finder {
-                    height: 90%;
-                    width: 10%;
-                    position: absolute;
-                    margin-left: 80%;
-                    margin-top: 3%;
-                    z-index: 10;
-                }
+                    #pi-finder {
+                        height: 90%;
+                        width: 10%;
+                        position: absolute;
+                        margin-left: 80%;
+                        margin-top: 3%;
+                        z-index: 10;
+                    }
 
-                #pi-finder-button {
-                    height: 70px;
-                    width: 70px;
-                    border-radius: 40px;
-                    border-color: orange;
-                    border: 2px solid orange;
-                    background-color: lightblue;
-                    outline: none;
-                }
+                    #pi-finder-button {
+                        height: 70px;
+                        width: 70px;
+                        border-radius: 40px;
+                        border-color: orange;
+                        border: 2px solid orange;
+                        background-color: lightblue;
+                        outline: none;
+                    }
 
-                #pi-finder-button:active {
-                    background-color: darkblue;
-                    border: 3px solid red;
-                    box-shadow: 0 5px #666;
-                }
+                    #pi-finder-button:active {
+                        background-color: darkblue;
+                        border: 3px solid red;
+                        box-shadow: 0 5px #666;
+                    }
 
-                #pi-finder-menu {
-                    border-style: solid;
-                    border-width: 5px;
-                    border-color: orange;
-                    border-radius: 10px;
-                    height: 70%;
-                    width: 100%;
-                    background-color: darkblue;
-                    display: none;
-                }
+                    #pi-finder-menu {
+                        border-style: solid;
+                        border-width: 5px;
+                        border-color: orange;
+                        border-radius: 10px;
+                        height: 70%;
+                        width: 100%;
+                        background-color: darkblue;
+                        display: none;
+                    }
 
-                #hide-pi-finder {
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 40px;
-                    border-color: orange;
-                    border: 2px solid orange;
-                    background-color: lightblue;
-                    outline: none;
-                }
+                    #hide-pi-finder {
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 40px;
+                        border-color: orange;
+                        border: 2px solid orange;
+                        background-color: lightblue;
+                        outline: none;
+                    }
 
-                #hide-pi-finder:active {
-                    background-color: darkblue;
-                    border: 3px solid red;
-                    box-shadow: 0 5px #666;
-                }
-            </style>
+                    #hide-pi-finder:active {
+                        background-color: darkblue;
+                        border: 3px solid red;
+                        box-shadow: 0 5px #666;
+                    }
+                </style>
 
-            <head>
-                <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-            </head>
+                <head>
+                    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+                </head>
 
-            <body id="back-background">
-            <div id="outer-border">
-                <div id="main-body">
+                <body id="back-background">
+                <div id="outer-border">
+                    <div id="main-body">
 
-                    <h1 id="main-title-header"><img src="{% static 'personal/img/TempistLogo.png' %}"
-                                                    style="height:100px; margin-left:-20px;"></h1>
+                        <h1 id="main-title-header"><img src="{% static 'personal/img/TempistLogo.png' %}"
+                                                        style="height:100px; margin-left:-20px;"></h1>
 
-                    <div id="pi-finder">
-                        <button id="pi-finder-button" type="button">Click Me!</button>
-                        <div id="pi-finder-menu">
-                            <button id="hide-pi-finder" type="button">_</button>
+                        <div id="pi-finder">
+                            <button id="pi-finder-button" type="button">Click Me!</button>
+                            <div id="pi-finder-menu">
+                                <button id="hide-pi-finder" type="button">_</button>
+                            </div>
+                        </div>
+                        <div id="map">
+                            <script type="text/javascript">
+
+                                map = new OpenLayers.Map("map");
+                                map.addLayer(new OpenLayers.Layer.OSM());
+
+                                var lonLat = new OpenLayers.LonLat(271.45, 47.1211).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                                var zoom = 16;
+                                var markers = new OpenLayers.Layer.Markers("Markers");
+                                map.addLayer(markers);
+                                var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+
+                                markers.addMarker(new OpenLayers.Marker(pi));
+                                map.setCenter(lonLat, zoom);
+                            </script>
+
                         </div>
                     </div>
-                    <div id="map">
-                        <script type="text/javascript">
-
-                            map = new OpenLayers.Map("map");
-                            map.addLayer(new OpenLayers.Layer.OSM());
-
-                            var lonLat = new OpenLayers.LonLat(271.45, 47.1211).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
-                            var zoom = 16;
-                            var markers = new OpenLayers.Layer.Markers("Markers");
-                            map.addLayer(markers);
-                            var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
-
-                            markers.addMarker(new OpenLayers.Marker(pi));
-                            map.setCenter(lonLat, zoom);
-                        </script>
-
-                    </div>
                 </div>
-            </div>
-            </body>
-            <script>
+                </body>
+                <script>
 
-                document.getElementById("pi-finder-button").onclick = function () {
-                    piFinderClick()
-                };
-                document.getElementById("hide-pi-finder").onclick = function () {
-                    hidePiClick()
-                };
+                    document.getElementById("pi-finder-button").onclick = function () {
+                        piFinderClick()
+                    };
+                    document.getElementById("hide-pi-finder").onclick = function () {
+                        hidePiClick()
+                    };
 
-                function piFinderClick() {
-                    document.getElementById("pi-finder-button").style.display = "none";
-                    document.getElementById("pi-finder-menu").style.display = "block";
-                };
+                    function piFinderClick() {
+                        document.getElementById("pi-finder-button").style.display = "none";
+                        document.getElementById("pi-finder-menu").style.display = "block";
+                    };
 
-                function hidePiClick() {
-                    document.getElementById("pi-finder-menu").style.display = "none";
-                    document.getElementById("pi-finder-button").style.display = "block";
-                };
+                    function hidePiClick() {
+                        document.getElementById("pi-finder-menu").style.display = "none";
+                        document.getElementById("pi-finder-button").style.display = "block";
+                    };
 
-                function toEnhancedData(num){
-                    window.location.replace("/data/"+num);
-                }
+                    function toEnhancedData(num) {
+                        window.location.replace("/data/" + num);
+                    }
 
-                function search(){
-                    var input = document.getElementById("searchBar").value;
-                    var x, i;
-                    x = document.getElementsByClassName("pies");
-                    for(i = 0; i < x.length; i++){
-                        x[i].style.display = "none";
-                        if(x[i].id.includes(input)){
-                            x[i].style.display = "block";
+                    function search() {
+                        var input = document.getElementById("searchBar").value;
+                        var x, i;
+                        x = document.getElementsByClassName("pies");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                            if (x[i].id.includes(input)) {
+                                x[i].style.display = "block";
+                            }
                         }
                     }
-                }
 
-                function loadFromData(){
-                    var x;
-                    for(x = 1; x < 21; x++){
-                        var div = document.createElement("div")
-                        div.className = "pies";
-                        div.id = x;
-                        div.innerHTML = "Pi#"+x+" <button onclick=\"toEnhancedData("+x+")\">Enhanced Data</button>";
-                        document.getElementById("piList").appendChild(div);
+                    function loadFromData() {
+                        var x;
+                        for (x = 1; x < 21; x++) {
+                            var div = document.createElement("div")
+                            div.className = "pies";
+                            div.id = x;
+                            div.innerHTML = "Pi#" + x + " <button onclick=\"toEnhancedData(" + x + ")\">Enhanced Data</button>";
+                            document.getElementById("piList").appendChild(div);
+                        }
                     }
-                }
-            </script>
+
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                </script>
 
             </div>
         </div>

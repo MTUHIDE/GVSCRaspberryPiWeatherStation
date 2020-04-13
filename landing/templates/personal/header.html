@@ -2,62 +2,73 @@
 <html lang="en">
 
 <head>
-	<title>Tempi.st</title>
-	<meta charset="utf-8" />
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
-	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Tempi.st</title>
+    <meta charset="utf-8"/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<style type="text/css">
-		html,
-		body {
-		  height:100%
-		}
-	</style>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%
+        }
+    </style>
 </head>
 
 <body class="body" style="background-color:#f6f6f6">
-	<div class="container-fluid" style="min-height:95%; ">
-		<div class="row">
-			  <div class="col-sm-2">
-				  <br>
-				  <center>
-					<img src="{% static 'personal/img/TempistLogo.png' %}" class="responsive-img" style='max-height:100px;' alt="face">
-				  </center>
-			  </div>
-			  <div class="col-sm-10">
-				  <br>
-				  <center>
-				  <h1>Tempi.st - Weather Monitoring</h1>
-				  </center>
-			  </div>
-		</div><hr>
+<div class="container-fluid" style="min-height:95%; ">
+    <div class="row">
+        <div class="col-sm-2">
+            <br>
+            <center>
+                <img src="{% static 'personal/img/TempistLogo.png' %}" class="responsive-img" style='max-height:100px;'
+                     alt="face">
+            </center>
+        </div>
+        <div class="col-sm-10">
+            <br>
+            <center>
+                <h1>Tempi.st - Weather Monitoring</h1>
+            </center>
+        </div>
+    </div>
+    <hr>
 
-		<div class="row">
-		  <div class="col-sm-2">
-		  <br>
+    <div class="row">
+        <div class="col-sm-2">
+            <br>
 
-		  <br>
-		   <!-- Great, til you resize. -->
-			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
-			<div class="card bs-sidebar" id="sidebar" style="background-color:#fff">
-			  <ul class="nav flex-column">
-				<li><a href='/'>Home</a></li>
-				<li><a href='/landing'>To-Map</a></li>
-			  </ul>
+            <br>
+            <!-- Great, til you resize. -->
+            <!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+            <div class="card bs-sidebar" id="sidebar" style="background-color:#fff">
+                <ul class="nav flex-column">
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/landing'>To-Map</a></li>
+                    <li><a href="#" onclick="signOut();">Sign Out</a></li>
+                    <script>
+                        function signOut() {
+                            var auth2 = gapi.auth2.getAuthInstance();
+                            auth2.signOut().then(function () {
+                                console.log('User signed out.');
+                            });
+                        }
+                    </script>
+                </ul>
 
-			</div> <!--well bs-sidebar affix-->
-		  </div> <!--col-sm-2-->
-		  <div class="col-sm-10">
+            </div> <!--well bs-sidebar affix-->
+        </div> <!--col-sm-2-->
+        <div class="col-sm-10">
 
-			<div class='container-fluid'>
-			<br><br>
-			   {% block content %}
-			   {% endblock %}
-			</div>
-		  </div>
-		</div>
-	</div>
+            <div class='container-fluid'>
+                <br><br>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
