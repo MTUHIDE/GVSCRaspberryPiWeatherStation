@@ -12,7 +12,10 @@ from .models import Pi
 
 
 def landing(request):
-    return render(request, 'landing/MainWebPage.html')
+    context = {
+        "pis": Pi.objects.all()
+    }
+    return render(request, 'landing/MainWebPage.html', context=context)
 
 
 def login(request):

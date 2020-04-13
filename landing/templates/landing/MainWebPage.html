@@ -14,7 +14,7 @@
 </head>
 
 
-<body class="body" onload="loadFromData()">
+<body class="body">
 <div class="container-fluid" style="min-height:95%; ">
     <div class="row">
         <div class="col-md-2">
@@ -48,6 +48,12 @@
                     <button id="searchBtn" type="submit" onclick="search()"><img src="../../static/personal/img/search16.png"></button>
                 </div>
                 <nav id="piList" style="height:100px; width:100%; overflow:hidden; overflow-y:scroll;">
+                    {% for pi in pis %}
+                    <div class="pies" id="{{ pi.id }}" >
+                        Pi #{{pi.id}}
+                        <a href="/data/{{pi.id}}">Enhanced Data</a>
+                    </div>
+                    {% endfor %}
                     <style type="text/css">
                         button {
                             color: black;
@@ -55,7 +61,7 @@
                         }
                     </style>
 			</nav>
-                <button id="loadPies" onclick="loadFromData()">Load from Data Base</button>
+                <!--<button id="loadPies" onclick="loadFromData()">Load from Data Base</button>-->
             </div> <!--well bs-sidebar affix-->
         </div> <!--col-sm-2-->
         <div class="col-md-10">
