@@ -45,7 +45,6 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% endif %}
-
                 </ul>
                 <div class="search-label-icon" style=" border-top: 2px solid orange">
                     <input id="searchBar" type="text" placeholder="Search...">
@@ -171,7 +170,6 @@
                 <body id="back-background">
                 <div id="outer-border">
                     <div id="main-body">
-
                         <h1 id="main-title-header"><img src="{% static 'personal/img/TempistLogo.png' %}"
                                                         style="height:100px; margin-left:-20px;"></h1>
 
@@ -196,7 +194,6 @@
                                 markers.addMarker(new OpenLayers.Marker(pi));
                                 map.setCenter(lonLat, zoom);
                             </script>
-
                         </div>
                     </div>
                 </div>
