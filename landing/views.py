@@ -3,9 +3,10 @@ import json
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Avg, Max, Min
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import logout
 
 from .models import PiData
 from .models import Pi
@@ -19,7 +20,10 @@ def landing(request):
 
 
 def login(request):
-    return render(request, 'personal/home.html')
+    if request.user.is_authenticated:
+        return redirect(landing)
+    else:
+        return render(request, 'personal/home.html')
 
 
 def data(request, pi_id):
@@ -55,3 +59,8 @@ def addDataPoint(request, pi_id):
     data.save()
 
     return HttpResponse(status=202)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(login)

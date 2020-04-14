@@ -2,41 +2,19 @@
 {% block content %}
 <html>
 <head>
-<title>Tempi.st</title>
+    <title>Tempi.st</title>
 </head>
 <body>
 <center>
-  <div id="my-signin2"></div>
-  <meta name="google-signin-client_id" content="1096837814836-uauls6kcv7rkn79il11ue5578eqgr39e.apps.googleusercontent.com">
-
-  <button id = "guest-login" type = button onclick="rerooute()">Login as a Guest</button>
-
-  <script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-
-    function rerooute(){
-      window.location.replace("/landing");
-    }
-  </script>
-
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'social:begin' 'google-oauth2' %}">
+        Login
+    </a>
+    {% endif %}
+    <br>
+    <a href="/landing">Continue as Guest</a>
 </center>
 </body>
 </html>
