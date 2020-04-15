@@ -46,15 +46,6 @@
                 <ul class="nav flex-column">
                     <li><a href='/'>Home</a></li>
                     <li><a href='/landing'>To-Map</a></li>
-                    <li><a href="#" onclick="signOut();">Sign Out</a></li>
-                    <script>
-                        function signOut() {
-                            var auth2 = gapi.auth2.getAuthInstance();
-                            auth2.signOut().then(function () {
-                                console.log('User signed out.');
-                            });
-                        }
-                    </script>
                 </ul>
 
             </div> <!--well bs-sidebar affix-->
