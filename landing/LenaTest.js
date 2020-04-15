@@ -1,6 +1,8 @@
 map = new OpenLayers.Map("map");
 map.addLayer(new OpenLayers.Layer.OSM());
 
+
+
 var lonLat = new OpenLayers.LonLat(271.45, 47.1211).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
 var zoom=16;
 var markers = new OpenLayers.Layer.Markers( "Markers" );

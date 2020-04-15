@@ -166,12 +166,6 @@
                         <h1 id="main-title-header"><img src="{% static 'personal/img/TempistLogo.png' %}"
                                                         style="height:100px; margin-left:-20px;"></h1>
 
-                        <div id="pi-finder">
-                            <button id="pi-finder-button" type="button">Click Me!</button>
-                            <div id="pi-finder-menu">
-                                <button id="hide-pi-finder" type="button">_</button>
-                            </div>
-                        </div>
                         <div id="map">
                             <script type="text/javascript">
 
@@ -182,9 +176,13 @@
                                 var zoom = 16;
                                 var markers = new OpenLayers.Layer.Markers("Markers");
                                 map.addLayer(markers);
-                                var pi = new OpenLayers.LonLat(271.45282, 47.118287).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
 
-                                markers.addMarker(new OpenLayers.Marker(pi));
+                                {% for pi in pis %}
+                                    var id = {{pi.id}}
+                                    var pi = new OpenLayers.LonLat({{pi.longitude}}, {{pi.latitude}}).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                                    markers.addMarker(new OpenLayers.Marker(pi, new OpenLayers.Icon("{% static 'personal/img/PiPin.png' %}")));
+                                {% endfor %}
+
                                 map.setCenter(lonLat, zoom);
                             </script>
 
@@ -194,17 +192,17 @@
                 </body>
                 <script>
 
-                    document.getElementById("pi-finder-button").onclick = function () {
-                        piFinderClick()
-                    };
-                    document.getElementById("hide-pi-finder").onclick = function () {
-                        hidePiClick()
-                    };
+<!--                    document.getElementById("pi-finder-button").onclick = function () {-->
+<!--                        piFinderClick()-->
+<!--                    };-->
+<!--                    document.getElementById("hide-pi-finder").onclick = function () {-->
+<!--                        hidePiClick()-->
+<!--                    };-->
 
-                    function piFinderClick() {
-                        document.getElementById("pi-finder-button").style.display = "none";
-                        document.getElementById("pi-finder-menu").style.display = "block";
-                    };
+<!--                    function piFinderClick() {-->
+<!--                        document.getElementById("pi-finder-button").style.display = "none";-->
+<!--                        document.getElementById("pi-finder-menu").style.display = "block";-->
+<!--                    }; -->
 
                     function hidePiClick() {
                         document.getElementById("pi-finder-menu").style.display = "none";
